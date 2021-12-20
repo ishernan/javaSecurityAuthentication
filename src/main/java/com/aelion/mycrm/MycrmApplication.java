@@ -9,5 +9,7 @@ public class MycrmApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MycrmApplication.class, args);
 	}
+	
+	
 
 }
