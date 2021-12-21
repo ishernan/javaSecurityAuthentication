@@ -16,7 +16,7 @@ import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtil {
-	@Value("${jwt.secret}")
+	@Value("${jwt.secret}")//read value inside application properties
 	private String jwtSecret;
 	
 	@Value("${jwt.token.validity}")

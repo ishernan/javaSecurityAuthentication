@@ -23,15 +23,17 @@ public class Person {
 	public String streetName;
 	public String city;
 	
-	public Person (String lastName, String firstName) {
-		this.lastName = lastName;
-		this.firstName = firstName;
-		
-	}
+//	public Person (String lastName, String firstName) {
+//		this.lastName = lastName;
+//		this.firstName = firstName;
+//		
+//	}
 	
-	public void setId(Long id) {
-		this.setId(id);
-	}
+//	public void setId(Long id) {
+//		this.setId(id);
+//	}
+	
+	
 	
 	
 

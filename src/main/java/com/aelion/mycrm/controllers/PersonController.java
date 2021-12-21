@@ -8,43 +8,47 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.aelion.mycrm.models.Person;
 import com.aelion.mycrm.services.ContactService;
 
+import com.aelion.mycrm.services.PersonService;
+
 
 @RestController
-@RequestMapping("/person") 
+@RequestMapping("person") 
+@CrossOrigin()
 public class PersonController {
 	
 	@Autowired
 	private ContactService contactService;
 	
-	@CrossOrigin //necessaire pour que les "entetes" puissent passer entre le backend et le front. Pour connecter le back et le front sans raler
+	@Autowired
+	private PersonService personService;
+
 	@GetMapping()
-	public List<String> getDummy(){ //List<String> est le type d'info que doit etre retourne par la methode 
-		ArrayList<String> persons = new ArrayList<String>(); 
-		persons.add("Aubert");
-		persons.add("Casper");
-		persons.add("Isaac");
-		
-		return persons;
-		
-	}
-	@CrossOrigin 
-	@GetMapping("/all")
-	public List<Person> getPerson() {
-		ArrayList<Person> persons = new ArrayList<Person>();
-		persons.add(new Person("Aubert", "Jean-Luc")); 
-		persons.add(new Person("Latte", "Truddy")); 
-		
-		return persons;
+	public ResponseEntity<String> buddy() {
+		return ResponseEntity.status(200).body("Hey buddy");
 	}
 	
+	@GetMapping("/all") 
+	public List<Person> getPersons() { // de la table persons depuis la BDD
+		System.out.println("marche pas");
+		return personService.findAllPerson();
+	}
+
+//	@GetMapping(path = "/{id}")
+//	public PersonDto getPerson(@PathVariable long id) {
+//		return service.findOne(id);
+//	}
+
+
 	@PostMapping()
 	@CrossOrigin(origins="http://localhost:4200")
 	public ResponseEntity<Person> addPerson(@RequestBody() Person person) {
@@ -53,3 +57,24 @@ public class PersonController {
 		
 	}
 }
+	
+//	@CrossOrigin //necessaire pour que les "entetes" puissent passer entre le backend et le front. Pour connecter le back et le front sans raler
+//	@GetMapping()
+//	public List<String> getDummy(){ //List<String> est le type d'info que doit etre retourne par la methode 
+//		ArrayList<String> persons = new ArrayList<String>(); 
+//		persons.add("Aubert");
+//		persons.add("Casper");
+//		persons.add("Isaac");
+//		
+//		return persons;
+//		
+//	}
+//	@CrossOrigin 
+//	@GetMapping("/all")
+//	public List<Person> getPerson() {
+//		ArrayList<Person> persons = new ArrayList<Person>();
+//		persons.add(new Person("Aubert", "Jean-Luc")); 
+//		persons.add(new Person("Latte", "Truddy")); 
+//		
+//		return persons;
+//	
