@@ -26,9 +26,8 @@ public class UserAuthService implements UserDetailsService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
-	
 	
 	public void saveUser(UserDtoRequest request){ 
 		Optional<User> optUser = this.userRepository.findByUserName(request.getUserName());
