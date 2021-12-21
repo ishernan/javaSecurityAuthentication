@@ -45,7 +45,7 @@ public class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/user/signin", "/user/signup", "/user/secret");
+		web.ignoring().antMatchers("/user/signin", "/user/signup", "/user/secret"); //on ignore tout sauf ces chemins 
 	}
 
 	@Autowired
